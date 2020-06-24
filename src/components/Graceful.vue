@@ -34,6 +34,7 @@ export default {
 .graceful {
   position: relative;
   min-width: 300px;
+  margin-top: 5%;
 
   img {
     position: absolute;
