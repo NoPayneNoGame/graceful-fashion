@@ -7,16 +7,15 @@
 <script>
 export default {
   props: {
-    colour: {
-      type: String
-    }
+    colour: String,
+    part: String
   },
   computed: {
     imgSrc() {
-      return `/img/${this.colour}/head.png`;
+      return `/img/${this.colour}/${this.part}.png`;
     },
     alt() {
-      return `${this.colour} Head`;
+      return `${this.colour} ${this.part}`;
     }
   }
 };

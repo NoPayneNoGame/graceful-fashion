@@ -1,24 +1,19 @@
 <template>
   <div class="graceful">
-    <hat :colour="colours.head" />
-    <chest :colour="colours.body" />
-    <gloves :colour="colours.gloves" />
-    <legs :colour="colours.legs" />
-    <boots :colour="colours.boots" />
-    <cape :colour="colours.cape" />
+    <outfit-piece
+      v-for="(colour, part) in colours"
+      :key="part"
+      :part="part"
+      :colour="colour"
+    />
   </div>
 </template>
 
 <script>
-import Boots from "./outfit/Boots";
-import Cape from "./outfit/Cape";
-import Chest from "./outfit/Chest";
-import Gloves from "./outfit/Gloves";
-import Hat from "./outfit/Hat";
-import Legs from "./outfit/Legs";
+import OutfitPiece from "./OutfitPiece";
 
 export default {
-  components: { Boots, Cape, Chest, Gloves, Hat, Legs },
+  components: { OutfitPiece },
   props: {
     colours: {
       type: Object,

@@ -111,14 +111,12 @@ export default {
       transform: rotateZ(45deg);
       width: 12px;
       height: 12px;
-      // margin-top: 0;
       transition: 200ms ease-in-out transform;
     }
   }
 
   .select-items.show ~ .chevron .chevron-down {
     transform: rotateZ(-135deg) translateY(-3px) translateX(-5px);
-    // margin-top: 6px;
   }
 
   .select-selected {
