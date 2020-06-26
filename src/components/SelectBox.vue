@@ -4,7 +4,7 @@
       {{ label }}
     </div>
 
-    <div class="select-wrapper" v-on-clickaway="onClickaway">
+    <div class="select-wrapper">
       <div class="select-selected" @click="toggleOpen">
         {{ selectedValue }}
       </div>
@@ -31,9 +31,7 @@
 </template>
 
 <script>
-import { mixin as clickaway } from "vue-clickaway";
 export default {
-  mixins: [clickaway],
   props: {
     value: String,
     options: Array,

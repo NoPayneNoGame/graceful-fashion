@@ -115,6 +115,7 @@ export default {
   position: relative;
   width: 160px;
   height: 211px;
+  transform: scale(2) translateY(80px) translateX(40px);
 }
 
 .equipment .interface {
