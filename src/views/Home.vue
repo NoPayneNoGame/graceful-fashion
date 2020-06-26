@@ -1,13 +1,8 @@
 <template>
   <div class="home">
     <div class="colour-picker">
-      <div class="colour" v-for="(value, key) in chosenColours" :key="key">
-        <select-box
-          v-model="chosenColours[key]"
-          :label="key"
-          :options="colourList"
-        />
-      </div>
+      <select-box v-model="allColour" label="Set all" :options="colourList" />
+      <equipment :colours="chosenColours" @select="handleEquipChange" />
     </div>
 
     <graceful :colours="chosenColours" />
@@ -17,15 +12,17 @@
 <script>
 import SelectBox from "@/components/SelectBox";
 import Graceful from "@/components/Graceful";
+import Equipment from "@/components/equipment/Equipment";
 
 export default {
   name: "Home",
-  components: { Graceful, SelectBox },
+  components: { Graceful, SelectBox, Equipment },
   props: {
     msg: String
   },
   data() {
     return {
+      allColour: "Original",
       chosenColours: {
         head: "Original",
         body: "Original",
@@ -45,6 +42,31 @@ export default {
         "Shayzien"
       ]
     };
+  },
+  methods: {
+    onClick(key) {
+      this.chosenColours.head = key;
+    },
+    handleEquipChange(colour, part) {
+      this.chosenColours[part] = colour;
+    }
+  },
+  computed: {
+    options() {
+      return this.colourList.map(colour => {
+        return {
+          key: colour,
+          html: `Equip <span class="highlight ${colour.toLowerCase()}">${colour}</span> <span class="highlight">hood</span>`
+        };
+      });
+    }
+  },
+  watch: {
+    allColour(newColour) {
+      Object.keys(this.chosenColours).forEach(key => {
+        this.chosenColours[key] = newColour;
+      });
+    }
   }
 };
 </script>
